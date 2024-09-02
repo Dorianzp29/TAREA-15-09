@@ -16,7 +16,7 @@ namespace _06Publicaciones.Models
 
 
         public DataTable todos() {
-            var cadena = "select * from paises";
+            var cadena = "select * from Paises";
             using (var cn = Conexion.GetConnection())
             {
                 try

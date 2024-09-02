@@ -14,9 +14,11 @@ namespace _06Publicaciones.Views.Ciudades
     public partial class frm_Lista_Ciudades : Form
     {
         CiudadesController _ciudadesController = new CiudadesController();
+
         public frm_Lista_Ciudades()
         {
             InitializeComponent();
+            dgvCiudades.CellContentClick += new DataGridViewCellEventHandler(dgvCiudades_CellContentClick);
         }
 
         private void frm_Lista_Ciudades_Load(object sender, EventArgs e)
@@ -32,10 +34,14 @@ namespace _06Publicaciones.Views.Ciudades
             dgvCiudades.Columns["Pais"].Visible = true;
             dgvCiudades.Columns["IdPais"].Visible = false;*/
 
-            dgvCiudades.Columns[0].Visible = false;
-            dgvCiudades.Columns[1].Visible = true;
-            dgvCiudades.Columns[2].Visible = false;
-            dgvCiudades.Columns[3].Visible = true;
+            if (dgvCiudades.Columns.Count >= 4)
+            {
+                dgvCiudades.Columns[0].Visible = false;
+                dgvCiudades.Columns[1].Visible = true;
+                dgvCiudades.Columns[2].Visible = false;
+                dgvCiudades.Columns[3].Visible = true;
+            }
+            
 
             // Ciudades.IdCiudad, Ciudades.Detalle as Ciudad, Paises.IdPais, Paises.Detalle AS 'Pais' FROM Ciudades 
 
@@ -65,11 +71,16 @@ namespace _06Publicaciones.Views.Ciudades
 
         private void dgvCiudades_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvCiudades.Columns["Editar"].Index && e.RowIndex >= 0) {
-                var id = dgvCiudades.Rows[e.RowIndex].Cells["IdCiudad"].Value.ToString();
-                //MessageBox.Show(id);
-                frm_Ciudades _Ciudades = new frm_Ciudades(id);
-                _Ciudades.Show();
+            if (e.ColumnIndex == dgvCiudades.Columns["Editar"].Index && e.RowIndex >= 0)
+            {
+                // Obtener los datos de la fila seleccionada
+                var idCiudad = dgvCiudades.Rows[e.RowIndex].Cells["IdCiudad"].Value.ToString();
+                var detalleCiudad = dgvCiudades.Rows[e.RowIndex].Cells["Ciudad"].Value.ToString();
+                var detallePais = dgvCiudades.Rows[e.RowIndex].Cells["Pais"].Value.ToString();
+
+                // Abrir el formulario de edición con los datos de la ciudad
+                frm_Ciudades frm = new frm_Ciudades(idCiudad, detalleCiudad, detallePais);
+                frm.ShowDialog();
             }
         }
     }
