@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using _06Publicaciones.Views.Empleados;
 using _06Publicaciones.Views.Autores;
-
+using _06Publicaciones.Views.Usuarios;
 
 namespace _06Publicaciones.Views
 {
@@ -36,6 +36,12 @@ namespace _06Publicaciones.Views
         private void trabajosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_usuarios _Usuarios = new frm_usuarios();
+            _Usuarios.ShowDialog();
         }
     }
 }

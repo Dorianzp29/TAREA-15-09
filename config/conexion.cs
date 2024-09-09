@@ -15,7 +15,18 @@ namespace _06Publicaciones.config
 
         public static SqlConnection GetConnection()
         {
-            return new SqlConnection(connectionString);
+            try
+            {
+                var connection = new SqlConnection(connectionString);
+                connection.Open();
+                return connection;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Error al conectar con la base de datos: {ex.Message}");
+                throw;
+            }
+        
         }
     }
 }
