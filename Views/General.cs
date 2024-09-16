@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using _06Publicaciones.Views.Empleados;
 using _06Publicaciones.Views.Autores;
 using _06Publicaciones.Views.Usuarios;
-
+using _06Publicaciones.Views.Reportes;
 namespace _06Publicaciones.Views
 {
     public partial class General : Form
@@ -42,6 +42,12 @@ namespace _06Publicaciones.Views
         {
             frm_usuarios _Usuarios = new frm_usuarios();
             _Usuarios.ShowDialog();
+        }
+
+        private void usuariosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ReportesUsuario _ReportesUsuario = new ReportesUsuario();
+            _ReportesUsuario.ShowDialog();
         }
     }
 }

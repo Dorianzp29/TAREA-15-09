@@ -119,7 +119,7 @@
             // 
             this.lst_Usuarios.FormattingEnabled = true;
             this.lst_Usuarios.ItemHeight = 16;
-            this.lst_Usuarios.Location = new System.Drawing.Point(409, 97);
+            this.lst_Usuarios.Location = new System.Drawing.Point(412, 68);
             this.lst_Usuarios.Name = "lst_Usuarios";
             this.lst_Usuarios.Size = new System.Drawing.Size(365, 308);
             this.lst_Usuarios.TabIndex = 8;
